@@ -1,9 +1,10 @@
 const express=require('express')
+const bodyparser=require('body-parser')
 const app=express()
 
-app.get("/",(req,res)=>{
-    res.send("Hello There")
-})
+app.use(bodyparser.json())
+require('./routes/dialogFlowRoutes')(app)
+
 
 const PORT=process.env.PORT||8000
 
